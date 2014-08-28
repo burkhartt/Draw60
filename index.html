@@ -12,15 +12,27 @@
       	background-color: #fff;
       	cursor: crosshair;
       }
+      #toolbar {
+      	
+      }
       #toolbar div {
-      	width: 50px;
+      	display: inline-block;
+      	width: 20px;
+      	height: 20px;
       	border: 1px solid #000;
       	background-color: #efefef;
       	cursor: pointer;
-      	display: inline;
+      	background-repeat: no-repeat;
+      	background-position: 2px 2px;
       }
       #toolbar div.active {
       	background-color: red;
+      }
+      #toolbar #pencil {
+      	background-image: url("Images/Buttons/pencil.png");      	
+      }
+      #toolbar #eraser {
+      	background-image: url("Images/Buttons/cancel.png");
       }
     </style>
   </head>
@@ -118,7 +130,7 @@
 		var self = this;
 
       	this.render = function() {
-      		return self.container.append($("<div id='pencil'>Crazy Pencil</div>"));
+      		return self.container.append($("<div id='pencil' />"));
       	};
 
       	this.bind = function(callback) {
@@ -150,7 +162,7 @@
       	var self = this;
 
       	this.render = function() {
-      		return self.container.append($("<div id='eraser'>Crazy Eraser</div>"));
+      		return self.container.append($("<div id='eraser' />"));
       	};
 
       	this.bind = function(callback) {

@@ -1,0 +1,31 @@
+body {
+      margin: 0px auto;
+      background-color: #545454;
+}      
+canvas {
+	border: 1px dotted #000;
+	background-color: #fff;
+	cursor: crosshair;
+}
+#toolbar {
+	
+}
+#toolbar div {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+	background-color: #efefef;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+}
+#toolbar div.active {
+	background-color: red;
+}
+#toolbar #pencil {
+	background-image: url("../Images/Buttons/pencil.png");      	
+}
+#toolbar #eraser {
+	background-image: url("../Images/Buttons/cancel.png");
+}

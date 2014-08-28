@@ -1,4 +1,5 @@
 function Timer(seconds, container) {
+	this.originalSeconds = seconds;
 	this.container = container;
 	this.seconds = seconds;
 	this.onFinish = null;
@@ -14,11 +15,17 @@ function Timer(seconds, container) {
 	};
 
 	this.tick = function() {		
-		this.seconds--;
+		this.seconds--;		
+
+		this.render();
+
 		if (this.seconds == 0) {
 			this.onFinish();
 		}
+	}
 
+	this.reset = function() {
+		this.seconds = this.originalSeconds;
 		this.render();
 	}
 }

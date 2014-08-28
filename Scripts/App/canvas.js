@@ -7,14 +7,15 @@ function Canvas(container, toolbar, colorbar) {
 	this.container = container;
 	this.inputManager = null;      	
 	this.toolbar = toolbar;
-      this.colorbar = colorbar;
+    this.colorbar = colorbar;
 	var self = this;
 
 	this.draw = function(e) {
 		if (!this.shouldDraw()){
 			return;
 		}
-            this.colorbar.draw(this.context, this.inputManager);
+    
+        this.colorbar.draw(this.context, this.inputManager);
 		this.toolbar.draw(this.context, this.inputManager);
 	};
 
@@ -32,11 +33,15 @@ function Canvas(container, toolbar, colorbar) {
 		this.inputManager = new InputManager(this.canvas);
 		this.inputManager.bind();
 		
-            this.toolbar.render();
-            this.colorbar.render();
+        this.toolbar.render();
+        this.colorbar.render();
 	};      	
 
-      this.save = function() {
-            console.log(self.canvas[0].toDataURL("image/png"));
-      };
+	this.save = function() {
+	    console.log(self.canvas[0].toDataURL("image/png"));
+    };
+
+    this.clear = function() {
+		this.context.clearRect(0, 0, this.width, this.height);
+    };
 };

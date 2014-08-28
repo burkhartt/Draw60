@@ -8,6 +8,7 @@
   	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/eraser.js"></script>
   	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/pencil.js"></script>
   	<script type="text/javascript" src="Scripts/App/colorbar.js"></script>
+  	<script type="text/javascript" src="Scripts/App/timer.js"></script>
   	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/black.js"></script>
   	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/red.js"></script>
   	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/blue.js"></script>
@@ -21,13 +22,17 @@
     	<div id="container"></div>
     	<div id="toolbar"></div>
     	<div id="colorbar"></div>
+    	<div id="timer"></div>
     </center>
     <script>
       $(function() {
       	var toolbar = new Toolbar($("#toolbar"));
       	var colorbar = new Colorbar($("#colorbar"));
       	var canvas = new Canvas($("#container"), toolbar, colorbar);
+      	var timer = new Timer(2, $("#timer"));
       	canvas.render();
+      	timer.render();
+      	timer.start(function() { canvas.save(); });
       });
     </script>
   </body>

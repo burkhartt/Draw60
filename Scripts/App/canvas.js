@@ -2,8 +2,8 @@ function Canvas(container, toolbar, colorbar) {
 	this.canvas = $("<canvas></canvas>");   
 	this.context = null;
 	this.rectangle = null;
-	this.height = 600;
-	this.width = 1000;
+	this.height = 400;
+	this.width = 800;
 	this.container = container;
 	this.inputManager = null;      	
 	this.toolbar = toolbar;
@@ -35,4 +35,8 @@ function Canvas(container, toolbar, colorbar) {
             this.toolbar.render();
             this.colorbar.render();
 	};      	
+
+      this.save = function() {
+            console.log(self.canvas[0].toDataURL("image/png"));
+      };
 };

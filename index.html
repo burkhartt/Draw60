@@ -11,13 +11,25 @@
       	border: 1px dotted #000;
       	background-color: #fff;
       }
+      #toolbar div {
+      	width: 50px;
+      	height: 50px;
+      	border: 1px solid #000;
+      	background-color: #efefef;
+      }
+      #toolbar div.active {
+      	background-color: red;
+      }
     </style>
   </head>
   <body>
-    <center><div id="container"></div></center>
+    <center>
+    	<div id="container"></div>
+    	<div id="toolbar"></div>
+    </center>
     
     <script>
-      function Canvas(container) {
+      function Canvas(container, toolbar) {
       	this.canvas = $("<canvas></canvas>");   
       	this.context = null;
       	this.rectangle = null;
@@ -25,16 +37,14 @@
       	this.width = 1000;
       	this.container = container;
       	this.inputManager = null;      	
+      	this.toolbar = toolbar;
       	var self = this;
 
 		this.draw = function(e) {
 			if (!this.shouldDraw()){
 				return;
 			}
-      		this.context.beginPath();
-		    this.context.moveTo(this.inputManager.mouse.lastX, this.inputManager.mouse.lastY);
-		    this.context.lineTo(this.inputManager.mouse.X, this.inputManager.mouse.Y);
-		    this.context.stroke();
+      		this.toolbar.draw(this.context, this.inputManager);
       	};
 
       	this.shouldDraw = function() {
@@ -50,6 +60,7 @@
       		this.context = this.canvas[0].getContext('2d');
       		this.inputManager = new InputManager(this.canvas);
       		this.inputManager.bind();
+      		this.toolbar.render();
       	};      	
       };
 
@@ -77,6 +88,90 @@
       	};
       }
 
+      function Toolbar(container) {
+      	this.container = container;
+      	this.buttons = [new PencilButton(this.container), new EraserButton(this.container)];
+      	this.activeButton = this.buttons[0];
+      	var self = this;
+
+      	this.render = function() {
+      		$.each(this.buttons, function(i, button) {   
+      			button.render();
+      			button.bind(function() {
+      				self.activeButton.deactivate();
+      				self.activeButton = button;
+      				self.activeButton.activate();
+      			});
+      		});
+      	};
+
+      	this.draw = function(context, inputManager) {
+      		this.activeButton.draw(context, inputManager);
+      	};
+      }
+
+      function PencilButton(container) {
+		this.container = container;
+		var self = this;
+
+      	this.render = function() {
+      		return self.container.append($("<div id='pencil'>Pencil</div>"));
+      	};
+
+      	this.bind = function(callback) {
+      		self.container.find('#pencil').on("click", function(e) {
+      			callback();
+      		});
+      	};
+
+      	this.activate = function() {
+      		self.container.find($("#pencil").addClass("active"));
+      	};
+
+      	this.deactivate = function() {
+			self.container.find($("#pencil").removeClass("active"));
+      	};
+
+      	this.draw = function(context, inputManager) {
+			context.beginPath();
+			context.strokeStyle = '#000000';
+	      	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
+	      	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
+	      	context.stroke();
+      	}
+      }
+
+      function EraserButton(container) {
+      	this.container = container;
+      	var self = this;
+
+      	this.render = function() {
+      		return self.container.append($("<div id='eraser'>Eraser</div>"));
+      	};
+
+      	this.bind = function(callback) {
+      		self.container.find('#eraser').on("click", function(e) {
+      			callback();
+      		});
+      	};
+
+      	this.activate = function() {
+      		self.container.find($("#eraser").addClass("active"));
+      	};
+
+      	this.deactivate = function() {
+			self.container.find($("#eraser").removeClass("active"));
+      	};
+
+      	this.draw = function(context, inputManager) {
+			context.beginPath();
+			context.strokeStyle = '#ff0000';
+	      	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
+	      	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
+	      	context.stroke();
+      	}
+      }
+
       function Mouse() {
       	this.lastX = null;
       	this.lastY = null;
@@ -91,7 +186,7 @@
       		this.lastY = this.Y;
       		this.X = e.clientX - rectangle.left;
       		this.Y = e.clientY - rectangle.top;
-      	}        
+      	}
 
       	this.mouseDown = function() {
       		this.isDown = true;
@@ -107,7 +202,8 @@
       }
 
       $(function() {
-      	var canvas = new Canvas($("#container"));
+      	var toolbar = new Toolbar($("#toolbar"));
+      	var canvas = new Canvas($("#container"), toolbar);
       	canvas.render();
       });
     </script>

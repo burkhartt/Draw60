@@ -24,6 +24,7 @@ function PencilButton(container) {
 		context.beginPath();
       	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
       	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
+      	context.lineCap = 'round';
       	context.lineWidth = 15;
       	context.stroke();	      	
 	}

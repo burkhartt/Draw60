@@ -2,7 +2,7 @@ function App() {
 	this.toolbar = new Toolbar($("#toolbar"));
   	this.colorbar = new Colorbar($("#colorbar"));
   	this.canvas = new Canvas($("#container"), this.toolbar, this.colorbar);
-  	this.timer = new Timer(2, $("#timer"));  	
+  	this.timer = new Timer(60, $("#timer"));  	
   	var self = this;
 
 	this.run = function() {

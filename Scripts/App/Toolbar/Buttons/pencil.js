@@ -22,7 +22,6 @@ function PencilButton(container) {
 
 	this.draw = function(context, inputManager) {
 		context.beginPath();
-		context.strokeStyle = '#000000';
       	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
       	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
       	context.lineWidth = 15;

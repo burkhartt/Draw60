@@ -7,6 +7,12 @@
   	<script type="text/javascript" src="Scripts/App/toolbar.js"></script>
   	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/eraser.js"></script>
   	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/pencil.js"></script>
+  	<script type="text/javascript" src="Scripts/App/colorbar.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/black.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/red.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/blue.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/yellow.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/green.js"></script>
   	<script type="text/javascript" src="Scripts/App/Inputs/mouse.js"></script>
   	<link rel="stylesheet" type="text/css" href="Styles/app.css"></link>
   </head>
@@ -14,11 +20,13 @@
     <center>
     	<div id="container"></div>
     	<div id="toolbar"></div>
+    	<div id="colorbar"></div>
     </center>
     <script>
       $(function() {
       	var toolbar = new Toolbar($("#toolbar"));
-      	var canvas = new Canvas($("#container"), toolbar);
+      	var colorbar = new Colorbar($("#colorbar"));
+      	var canvas = new Canvas($("#container"), toolbar, colorbar);
       	canvas.render();
       });
     </script>

@@ -7,9 +7,6 @@ canvas {
 	background-color: #fff;
 	cursor: crosshair;
 }
-#toolbar {
-	
-}
 #toolbar div {
 	display: inline-block;
 	width: 20px;
@@ -28,4 +25,27 @@ canvas {
 }
 #toolbar #eraser {
 	background-image: url("../Images/Buttons/cancel.png");
+}
+
+#colorbar div {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      cursor: pointer;
+}
+#colorbar #color-black {
+      background-color: #000;
+}
+#colorbar #color-red {
+      background-color: red;
+}
+#colorbar #color-blue {
+      background-color: blue;
+}
+#colorbar #color-yellow {
+      background-color: yellow;
+}
+#colorbar #color-green {
+      background-color: green;
 }

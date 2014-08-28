@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+    <style>
+      body {
+        margin: 0px auto;
+        background-color: #545454;
+      }      
+      canvas {
+      	border: 1px dotted #000;
+      	background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <center><div id="container"></div></center>
+    
+    <script>
+      function Canvas(container) {
+      	this.canvas = $("<canvas></canvas>");   
+      	this.context = null;
+      	this.rectangle = null;
+      	this.height = 600;
+      	this.width = 1000;
+      	this.container = container;
+      	this.inputManager = null;      	
+      	var self = this;
+
+		this.draw = function(e) {
+			if (!this.shouldDraw()){
+				return;
+			}
+      		this.context.beginPath();
+		    this.context.moveTo(this.inputManager.mouse.lastX, this.inputManager.mouse.lastY);
+		    this.context.lineTo(this.inputManager.mouse.X, this.inputManager.mouse.Y);
+		    this.context.stroke();
+      	};
+
+      	this.shouldDraw = function() {
+      		return this.inputManager.mouse.isDown;
+      	};
+
+      	this.render = function() {
+      		this.canvas.attr({'height' : this.height, 'width' : this.width});
+      		this.container.html(this.canvas);
+      		$(this.canvas).on("mousemove", function(e) {
+      			self.draw(e);
+      		});      		
+      		this.context = this.canvas[0].getContext('2d');
+      		this.inputManager = new InputManager(this.canvas);
+      		this.inputManager.bind();
+      	};      	
+      };
+
+      function InputManager(container) {
+      	this.container = container;
+      	this.mouse = new Mouse();
+      	var self = this;
+
+      	this.bind = function() {      		
+      		this.container.on("mousedown", function(e) {
+      			self.mouse.mouseDown();
+      		});
+
+      		this.container.on("mouseup", function(e) {
+      			self.mouse.mouseUp();
+      		});
+
+      		this.container.on("mousemove", function(e) {      		
+      			self.mouse.updatePosition(e, self.container[0]);
+      		});
+
+      		this.container.on("mouseout", function(e) {
+      			self.mouse.mouseOut();
+      		});
+      	};
+      }
+
+      function Mouse() {
+      	this.lastX = null;
+      	this.lastY = null;
+      	this.X = null;
+      	this.Y = null;
+      	this.isDown = false;
+      	var self = this;
+
+      	this.updatePosition = function(e, canvas) {
+      		var rectangle = canvas.getBoundingClientRect();
+      		this.lastX = this.X;
+      		this.lastY = this.Y;
+      		this.X = e.clientX - rectangle.left;
+      		this.Y = e.clientY - rectangle.top;
+      	}        
+
+      	this.mouseDown = function() {
+      		this.isDown = true;
+      	}
+
+      	this.mouseUp = function() {
+      		this.isDown = false;
+      	}
+
+      	this.mouseOut = function() {
+      		this.isDown = false;
+      	}
+      }
+
+      $(function() {
+      	var canvas = new Canvas($("#container"));
+      	canvas.render();
+      });
+    </script>
+  </body>
+</html> 

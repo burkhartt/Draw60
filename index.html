@@ -10,12 +10,14 @@
       canvas {
       	border: 1px dotted #000;
       	background-color: #fff;
+      	cursor: crosshair;
       }
       #toolbar div {
       	width: 50px;
-      	height: 50px;
       	border: 1px solid #000;
       	background-color: #efefef;
+      	cursor: pointer;
+      	display: inline;
       }
       #toolbar div.active {
       	background-color: red;
@@ -115,7 +117,7 @@
 		var self = this;
 
       	this.render = function() {
-      		return self.container.append($("<div id='pencil'>Pencil</div>"));
+      		return self.container.append($("<div id='pencil'>Crazy Pencil</div>"));
       	};
 
       	this.bind = function(callback) {
@@ -137,6 +139,7 @@
 			context.strokeStyle = '#000000';
 	      	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
 	      	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
+	      	context.lineWidth = 15;
 	      	context.stroke();
       	}
       }
@@ -146,7 +149,7 @@
       	var self = this;
 
       	this.render = function() {
-      		return self.container.append($("<div id='eraser'>Eraser</div>"));
+      		return self.container.append($("<div id='eraser'>Crazy Eraser</div>"));
       	};
 
       	this.bind = function(callback) {
@@ -165,9 +168,10 @@
 
       	this.draw = function(context, inputManager) {
 			context.beginPath();
-			context.strokeStyle = '#ff0000';
+			context.strokeStyle = '#ffffff';
 	      	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
 	      	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
+	      	context.lineWidth = 50;
 	      	context.stroke();
       	}
       }

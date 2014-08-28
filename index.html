@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-  	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>
+  	<script type="text/javascript" src="Scripts/jquery-2.1.1.min.js"></script>  	
     <style>
       body {
         margin: 0px auto;
@@ -46,6 +46,7 @@
 			if (!this.shouldDraw()){
 				return;
 			}
+			console.log(this.canvas[0].toDataURL());
       		this.toolbar.draw(this.context, this.inputManager);
       	};
 
@@ -140,7 +141,7 @@
 	      	context.moveTo(inputManager.mouse.lastX, inputManager.mouse.lastY);
 	      	context.lineTo(inputManager.mouse.X, inputManager.mouse.Y);
 	      	context.lineWidth = 15;
-	      	context.stroke();
+	      	context.stroke();	      	
       	}
       }
 

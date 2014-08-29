@@ -3,7 +3,6 @@ function ApiClient() {
 		$.ajax({
 			type: "POST",
 			url: url,
-			contentType: "application/json",
 			data: data
 		}).done(function(msg) {
 			console.log(msg);

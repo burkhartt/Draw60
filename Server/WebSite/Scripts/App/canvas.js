@@ -44,7 +44,12 @@ function Canvas(container, toolbar, colorbar) {
     };
 
     this.saveCallback = function(response) {
-    	console.log(response);
+		var img = new Image;
+		img.onload = function() {
+		  base.context.drawImage(img,0,0);
+		};
+		img.src = response;
+    	console.log("DONE");
     };
 
     this.clear = function() {

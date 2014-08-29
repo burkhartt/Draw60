@@ -5,20 +5,55 @@
 		[
 		]
 	},
+	"buffers":
+	[
+		{
+			"contents": "<!DOCTYPE HTML>\n<html>\n  <head>\n  	<script type=\"text/javascript\" src=\"Scripts/Lib/jquery-2.1.1.min.js\"></script> \n  	<script type=\"text/javascript\" src=\"Scripts/App/ServerInteraction/api-client.js\"></script> \n  	<script type=\"text/javascript\" src=\"Scripts/App/canvas.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/inputmanager.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/toolbar.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Toolbar/Buttons/eraser.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Toolbar/Buttons/pencil.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/colorbar.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/timer.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Colorbar/Colors/black.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Colorbar/Colors/red.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Colorbar/Colors/blue.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Colorbar/Colors/yellow.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Colorbar/Colors/green.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/Inputs/mouse.js\"></script>\n  	<script type=\"text/javascript\" src=\"Scripts/App/app.js\"></script>\n  	<link rel=\"stylesheet\" type=\"text/css\" href=\"Styles/app.css\"></link>\n  </head>\n  <body>  	\n    <center>\n    	<h1>Draw<sup>60</sup></h1>\n    	<div id=\"container\"></div>\n    	<div id=\"toolbar\"></div>\n    	<div id=\"colorbar\"></div>\n    	<div id=\"timer\"></div>\n    </center>\n    <script>\n      $(function() {\n      	var app = new App();\n      	app.run();\n      });\n    </script>\n  </body>\n</html> ",
+			"file": "index.html",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1730,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 671,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Server/server.js",
+			"settings":
+			{
+				"buffer_size": 1644,
+				"line_ending": "Windows"
+			}
+		}
+	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 311.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 126.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
 	},
 	"distraction_free":
@@ -32,11 +67,30 @@
 	},
 	"file_history":
 	[
+		"/C/_Application/draw60/Scripts/App/ServerInteraction/api-client.js",
+		"/C/_Application/draw60/Scripts/Server/server.js",
+		"/C/_Application/draw60/Scripts/App/canvas.js",
+		"/C/_Application/draw60/Scripts/App/app.js",
+		"/C/_Application/draw60/Scripts/App/timer.js",
+		"/C/_Application/draw60/Gruntfile.js",
+		"/C/_Application/draw60/Scripts/App/toolbar.js",
+		"/C/_Application/draw60/Scripts/App/Toolbar/Buttons/pencil.js",
+		"/C/_Application/draw60/Scripts/App/Inputs/mouse.js",
+		"/C/_Application/draw60/Scripts/App/Colorbar/Colors/red.js",
+		"/C/_Application/draw60/Scripts/App/Colorbar/Colors/green.js",
+		"/C/_Application/draw60/Scripts/App/Colorbar/Colors/yellow.js",
+		"/C/_Application/draw60/Scripts/App/Colorbar/Colors/blue.js",
+		"/C/_Application/draw60/Scripts/App/colorbar.js",
+		"/C/_Application/draw60/Scripts/App/Colorbar/Colors/black.js",
+		"/C/_Application/draw60/Styles/app.css",
+		"/C/_Application/draw60/Scripts/App/Toolbar/Buttons/eraser.js",
+		"/C/_Application/draw60/Scripts/App/inputmanager.js",
+		"/C/Users/Tim Burkhart/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/_Application/draw60/index.html"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -50,6 +104,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"html",
+			"<",
+			">\n",
+			">",
+			"head",
+			"\n<",
+			"<"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -64,13 +125,108 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1427,
+								1427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								167,
+								167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Server/server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
+								336
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -99,9 +255,10 @@
 	{
 		"height": 0.0
 	},
+	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -109,6 +266,26 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"server",
+				"Scripts\\Server\\server.js"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"canvas",
+				"Scripts\\App\\canvas.js"
+			],
+			[
+				"timer",
+				"Scripts\\App\\timer.js"
+			],
+			[
+				"app.js",
+				"Scripts\\App\\app.js"
+			]
 		],
 		"width": 0.0
 	},

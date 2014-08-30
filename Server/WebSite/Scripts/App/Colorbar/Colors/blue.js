@@ -21,6 +21,7 @@ function BlueColor(container) {
 	};
 
 	this.draw = function(context, inputManager) {
-		context.strokeStyle = 'blue';
+	    context.strokeStyle = 'blue';
+	    context.shadowColor = 'rgb(0, 0, 0)';
 	}
 }

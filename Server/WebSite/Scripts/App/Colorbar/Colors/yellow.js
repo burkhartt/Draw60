@@ -21,6 +21,7 @@ function YellowColor(container) {
 	};
 
 	this.draw = function(context, inputManager) {
-		context.strokeStyle = 'yellow';
+	    context.strokeStyle = 'yellow';
+	    context.shadowColor = 'rgb(0, 0, 0)';
 	}
 }

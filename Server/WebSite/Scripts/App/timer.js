@@ -1,31 +1,32 @@
-function Timer(seconds, container) {
-	this.originalSeconds = seconds;
+function Timer(drawCount, container) {
+    this.maxDrawCount = drawCount;
 	this.container = container;
-	this.seconds = seconds;
+	this.drawCount = 0;
 	this.onFinish = null;
 	var self = this;
 
-	this.render = function() {
-		this.container.html(this.seconds);
-	}
+	this.render = function () {
+	    this.container.find("#timer-progress").css("height", this.getPercentage());
+	};
+
+    this.getPercentage = function() {
+        return (this.maxDrawCount - this.drawCount) / this.maxDrawCount * 100 + "%";
+    };
 
 	this.start = function(callback) {
 		this.onFinish = callback;
-		window.setInterval(function() { self.tick(); }, 1000);
 	};
 
-	this.tick = function() {		
-		this.seconds--;		
+	this.draw = function () {
+	    this.drawCount++;
+	    this.render();
+	    if (this.drawCount >= this.maxDrawCount) {
+	        this.onFinish();
+	    }
+	};
 
-		this.render();
-
-		if (this.seconds == 0) {
-			this.onFinish();
-		}
-	}
-
-	this.reset = function() {
-		this.seconds = this.originalSeconds;
-		this.render();
-	}
+    this.reset = function() {
+        this.drawCount = 0;
+        this.render();
+    };
 }

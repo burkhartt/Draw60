@@ -1,6 +1,6 @@
 function Toolbar(container) {
 	this.container = container;
-	this.buttons = [new PencilButton(this.container), new EraserButton(this.container)];
+	this.buttons = [new PencilButton(this.container), new EraserButton(this.container), new LineJoinButton(this.container)];
 	this.activeButton = this.buttons[0];
 	var self = this;
 
@@ -15,7 +15,7 @@ function Toolbar(container) {
 		});
 	};
 
-	this.draw = function(context, inputManager) {
-		this.activeButton.draw(context, inputManager);
+	this.draw = function(context, inputManager, event) {
+	    this.activeButton.draw(context, inputManager, event);
 	};
 }

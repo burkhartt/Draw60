@@ -17,14 +17,16 @@ function Canvas(container, toolbar, colorbar) {
 		}
     
         this.colorbar.draw(this.context, this.inputManager);
-		this.toolbar.draw(this.context, this.inputManager);
+        this.toolbar.draw(this.context, this.inputManager, e);
+	    this.timer.draw();
 	};
 
 	this.shouldDraw = function() {
 		return this.inputManager.mouse.isDown;
 	};
 
-	this.render = function() {
+	this.render = function (timer) {
+	    this.timer = timer;
 		this.canvas.attr({'height' : this.height, 'width' : this.width});
 		this.container.html(this.canvas);
 		$(this.canvas).on("mousemove", function(e) {

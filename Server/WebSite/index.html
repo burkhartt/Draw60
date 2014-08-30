@@ -6,7 +6,8 @@
   	<script type="text/javascript" src="Scripts/App/canvas.js"></script>
   	<script type="text/javascript" src="Scripts/App/inputmanager.js"></script>
   	<script type="text/javascript" src="Scripts/App/toolbar.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/eraser.js"></script>
+      <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/eraser.js"></script>
+      <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/lineJoin.js"></script>
   	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/pencil.js"></script>
   	<script type="text/javascript" src="Scripts/App/colorbar.js"></script>
   	<script type="text/javascript" src="Scripts/App/timer.js"></script>
@@ -22,10 +23,9 @@
   <body>  	
     <center>
     	<h1>Draw<sup>60</sup></h1>
-    	<div id="container"></div>
+        <div id="main"><div id="timer"><div id="timer-progress"></div></div><div id="container"></div></div>
     	<div id="toolbar"></div>
     	<div id="colorbar"></div>
-    	<div id="timer"></div>
     </center>
     <script>
       $(function() {

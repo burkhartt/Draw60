@@ -49,3 +49,45 @@ canvas {
 #colorbar #color-green {
       background-color: green;
 }
+
+#main{
+    margin: auto;
+    width: 1000px;
+    height: 400px;   
+}
+
+.clearfix {
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+#container {
+    display: inline-flex;
+    border: 2px solid #e2e2e2;
+    height: 100%;
+}
+
+#container canvas {
+    border: none;
+}
+
+#timer {
+    height: 100%;
+    width: 175px;
+    border: 2px solid #e2e2e2;
+    display: inline-flex;
+    position: relative;
+}
+
+#timer-progress {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: #1a1a1a;
+}
+
+div {
+    box-sizing: border-box;
+}

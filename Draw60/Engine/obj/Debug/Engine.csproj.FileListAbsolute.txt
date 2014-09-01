@@ -1,0 +1,15 @@
+C:\_Application\draw60\Draw60\Engine\bin\Debug\Engine.dll
+C:\_Application\draw60\Draw60\Engine\bin\Debug\Engine.pdb
+C:\_Application\draw60\Draw60\Engine\bin\Debug\Autofac.dll
+C:\_Application\draw60\Draw60\Engine\bin\Debug\MongoDB.Bson.dll
+C:\_Application\draw60\Draw60\Engine\bin\Debug\MongoDB.Driver.dll
+C:\_Application\draw60\Draw60\Engine\bin\Debug\Simple.Data.dll
+C:\_Application\draw60\Draw60\Engine\bin\Debug\Simple.Data.MongoDB.dll
+C:\_Application\draw60\Draw60\Engine\bin\Debug\Autofac.xml
+C:\_Application\draw60\Draw60\Engine\bin\Debug\MongoDB.Bson.pdb
+C:\_Application\draw60\Draw60\Engine\bin\Debug\MongoDB.Bson.xml
+C:\_Application\draw60\Draw60\Engine\bin\Debug\MongoDB.Driver.pdb
+C:\_Application\draw60\Draw60\Engine\bin\Debug\MongoDB.Driver.xml
+C:\_Application\draw60\Draw60\Engine\obj\Debug\Engine.csprojResolveAssemblyReference.cache
+C:\_Application\draw60\Draw60\Engine\obj\Debug\Engine.dll
+C:\_Application\draw60\Draw60\Engine\obj\Debug\Engine.pdb

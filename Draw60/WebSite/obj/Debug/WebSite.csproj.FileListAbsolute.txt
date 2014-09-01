@@ -1,0 +1,5 @@
+C:\_Application\draw60\Draw60\WebSite\bin\WebSite.dll
+C:\_Application\draw60\Draw60\WebSite\bin\WebSite.pdb
+C:\_Application\draw60\Draw60\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
+C:\_Application\draw60\Draw60\WebSite\obj\Debug\WebSite.dll
+C:\_Application\draw60\Draw60\WebSite\obj\Debug\WebSite.pdb

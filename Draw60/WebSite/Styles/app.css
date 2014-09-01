@@ -1,0 +1,93 @@
+body {
+      margin: 0px auto;
+      background-color: #545454;
+}      
+canvas {
+	border: 1px dotted #000;
+	background-color: #fff;
+	cursor: crosshair;
+}
+#toolbar div {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+	background-color: #efefef;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+}
+#toolbar div.active {
+	background-color: red;
+}
+#toolbar #pencil {
+	background-image: url("../Images/Buttons/pencil.png");      	
+}
+#toolbar #eraser {
+	background-image: url("../Images/Buttons/cancel.png");
+}
+
+#colorbar div {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      cursor: pointer;
+}
+#colorbar #color-black {
+      background-color: #000;
+}
+#colorbar #color-red {
+      background-color: red;
+}
+#colorbar #color-blue {
+      background-color: blue;
+}
+#colorbar #color-yellow {
+      background-color: yellow;
+}
+#colorbar #color-green {
+      background-color: green;
+}
+
+#main{
+    margin: auto;
+    width: 1000px;
+    height: 400px;   
+}
+
+.clearfix {
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+#container {
+    display: inline-flex;
+    border: 2px solid #e2e2e2;
+    height: 100%;
+}
+
+#container canvas {
+    border: none;
+}
+
+#timer {
+    height: 100%;
+    width: 175px;
+    border: 2px solid #e2e2e2;
+    display: inline-flex;
+    position: relative;
+}
+
+#timer-progress {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: #1a1a1a;
+}
+
+div {
+    box-sizing: border-box;
+}

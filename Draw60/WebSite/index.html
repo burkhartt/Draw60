@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<script type="text/javascript" src="Scripts/Lib/jquery-2.1.1.min.js"></script> 
+    <script type="text/javascript" src="Scripts/Lib/jquery.cookie.js"></script>
+  	<script type="text/javascript" src="Scripts/App/ServerInteraction/api-client.js"></script> 
+  	<script type="text/javascript" src="Scripts/App/canvas.js"></script>
+  	<script type="text/javascript" src="Scripts/App/inputmanager.js"></script>
+  	<script type="text/javascript" src="Scripts/App/toolbar.js"></script>
+      <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/eraser.js"></script>
+      <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/lineJoin.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/pencil.js"></script>
+  	<script type="text/javascript" src="Scripts/App/colorbar.js"></script>
+  	<script type="text/javascript" src="Scripts/App/timer.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/black.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/red.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/blue.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/yellow.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/green.js"></script>
+  	<script type="text/javascript" src="Scripts/App/Inputs/mouse.js"></script>
+  	<script type="text/javascript" src="Scripts/App/app.js"></script>
+  	<link rel="stylesheet" type="text/css" href="Styles/app.css"></link>
+  </head>
+  <body>  	
+    <center>
+    	<h1>Draw<sup>60</sup></h1>
+        <div id="main"><div id="timer"><div id="timer-progress"></div></div><div id="container"></div></div>
+    	<div id="toolbar"></div>
+    	<div id="colorbar"></div>
+    </center>
+    <script>
+      $(function() {
+      	var app = new App();
+      	app.run();
+      });
+    </script>
+  </body>
+</html> 

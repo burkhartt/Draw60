@@ -34,11 +34,15 @@ namespace Draw60.Controllers {
 
         [Route("user/{userId}/game/{gameId}/save")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Game PostSave(Guid userId, Guid gameId, [FromBody]Game game) {
+        public Game PostSave(Guid userId, Guid gameId, [FromBody]DrawingRequest value) {
             var savedGame = gameRepository.GetById(gameId);
-            savedGame.Drawing = game.Drawing;
+            savedGame.Drawing = System.Web.HttpUtility.UrlDecode(value.Drawing);
             gameRepository.Save(savedGame);
             return gameService.GetRandomGame(gameId, userId);
         }
+    }
+
+    public class DrawingRequest {
+        public string Drawing { get; set; }
     }
 }

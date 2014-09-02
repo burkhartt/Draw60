@@ -11,6 +11,7 @@ function Canvas(game, session, container, toolbar, colorbar) {
 	this.toolbar = toolbar;
     this.colorbar = colorbar;
     this.apiClient = new ApiClient();
+    this.isActive = true;
 	var self = this;
 
 	this.draw = function(e) {
@@ -23,7 +24,10 @@ function Canvas(game, session, container, toolbar, colorbar) {
 	    this.timer.draw();
 	};
 
-	this.shouldDraw = function() {
+	this.shouldDraw = function () {
+	    if (!self.isActive) {
+	        return;
+	    }
 		return this.inputManager.mouse.isDown;
 	};
 
@@ -42,9 +46,11 @@ function Canvas(game, session, container, toolbar, colorbar) {
         self.colorbar.render();
 	};      	
 
-	this.save = function() {
-	    self.game.setDrawing(self.canvas[0].toDataURL("image/png"));
-	    self.apiClient.post("/user/" + session.userId + "/game/" + self.game.id + "/save", JSON.stringify(self.game), self.saveCallback);
+	this.save = function () {
+	    var img = self.canvas[0].toDataURL("image/png");
+	    $("#fakeImage").attr("src", img);
+	    self.game.setDrawing(img);
+	    self.apiClient.post("/user/" + session.userId + "/game/" + self.game.id + "/save", JSON.stringify({ Drawing: encodeURIComponent(img) }), self.saveCallback);
     };
 
 	this.saveCallback = function (response) {
@@ -53,7 +59,13 @@ function Canvas(game, session, container, toolbar, colorbar) {
 	    if (response.Drawing) {
 	        var img = $('<img src="' + response.Drawing + '" />').get(0);
 	        self.context.drawImage(img, 0, 0);
-	    }		
+	    }
+
+	    self.isActive = true;
+	};
+
+    this.stop = function() {
+        self.isActive = false;
     };
 
     this.clear = function() {

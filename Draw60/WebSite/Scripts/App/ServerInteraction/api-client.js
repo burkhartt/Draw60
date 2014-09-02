@@ -6,7 +6,7 @@ function ApiClient() {
 			type: "POST",
 			url: this.baseUrl + url,
 			data: data,
-			contentType: "application/json; charset=utf-8",
+			contentType: "application/json",
 			dataType: "json",
 		}).done(function(msg) {
 			console.log(msg);

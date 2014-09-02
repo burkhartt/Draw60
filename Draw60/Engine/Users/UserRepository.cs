@@ -11,7 +11,7 @@ namespace Engine.Users {
 
         public void Save(User user) {
             var db = databaseProvider.Get();
-            db.User.Upsert(user);
+            db.User.Insert(user);
         }
 
         public User GetById(Guid userId) {

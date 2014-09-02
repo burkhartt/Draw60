@@ -19,6 +19,7 @@ function App() {
 	};
 
 	this.drawingComplete = function () {
+	    self.canvas.stop();
 	    self.canvas.save();
 	    self.timer.reset();
 	    self.canvas.clear();

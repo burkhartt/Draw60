@@ -12,12 +12,11 @@ namespace Engine.Games {
         public void Save(Game game) {
             var db = databaseProvider.Get();
 
-            db.Game.DeleteById(game.Id);
-            db.Game.Insert(game);
-            db.GameParticipants.DeleteAllByGameId(game.Id);
+            db.Game.UpsertById(game);
+            db.GameParticipant.DeleteAllById(game.Id);
             
             foreach (var participant in game.Participants) {
-                db.GameParticipants.Insert(GameId: game.Id, UserId: participant.Id);
+                db.GameParticipant.Insert(GameId: game.Id, UserId: participant.Id);
             }
         }
 

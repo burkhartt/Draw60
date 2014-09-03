@@ -2,18 +2,24 @@ function App() {
 	this.toolbar = new Toolbar($("#toolbar"));
   	this.colorbar = new Colorbar($("#colorbar"));
     this.canvas = null;
-  	this.timer = new Timer(100, $("#timer"));  	
+  	this.progressBar = new ProgressBar(100, $("#progress"));  	
   	this.session = new Session();
     this.game = new Game();
   	var self = this;
 
-	this.run = function() {
+  	this.run = function () {
+  	    $(document).ajaxStart(function () {
+  	        $('#loading').show();
+  	    }).ajaxStop(function () {
+  	        $('#loading').hide();
+  	    });
+
 	    this.session.initialize(function (session) {	        
 	        self.game.initialize(session, function () {
-	            self.canvas = new Canvas(self.game, session, $("#container"), self.toolbar, self.colorbar);
-	            self.canvas.render(self.timer);
-	            self.timer.render();
-	            self.timer.start(function () { self.drawingComplete(); });
+	            self.canvas = new Canvas(self.game, session, $("#canvas"), self.toolbar, self.colorbar);
+	            self.canvas.render(self.progressBar);
+	            self.progressBar.render();
+	            self.progressBar.start(function () { self.drawingComplete(); });
 	        });			
 		});	    
 	};
@@ -21,7 +27,7 @@ function App() {
 	this.drawingComplete = function () {
 	    self.canvas.stop();
 	    self.canvas.save();
-	    self.timer.reset();
+	    self.progressBar.reset();
 	    self.canvas.clear();
 	};
 }

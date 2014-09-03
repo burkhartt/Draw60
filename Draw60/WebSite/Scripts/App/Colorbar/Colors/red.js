@@ -20,8 +20,8 @@ function RedColor(container) {
 		self.container.find($("#color-red").removeClass("active"));
 	};
 
-	this.draw = function(context, inputManager) {
-	    context.strokeStyle = 'red';
-	    context.shadowColor = 'rgb(0, 0, 0)';
-	}
+    this.draw = function(context, inputManager) {
+        context.strokeStyle = 'red';
+        context.shadowColor = 'rgb(0, 0, 0)';
+    };
 }

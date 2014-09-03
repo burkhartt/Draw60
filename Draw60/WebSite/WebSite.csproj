@@ -57,6 +57,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Styles\bootstrap-theme.css" />
+    <Content Include="Styles\bootstrap-theme.min.css" />
+    <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\Buttons\cancel.png" />
     <Content Include="Images\Buttons\pencil.png" />
     <Content Include="index.html" />
@@ -76,6 +81,13 @@
     <Content Include="Scripts\App\Toolbar\Buttons\eraser.js" />
     <Content Include="Scripts\App\Toolbar\Buttons\lineJoin.js" />
     <Content Include="Scripts\App\Toolbar\Buttons\pencil.js" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Styles\bootstrap-theme.css.map" />
+    <Content Include="Styles\bootstrap.css.map" />
+    <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\Lib\jquery-2.1.1.min.js" />
     <Content Include="Scripts\Lib\jquery.cookie.js" />
     <Content Include="Styles\app.css" />

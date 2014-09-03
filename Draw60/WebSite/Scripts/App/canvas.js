@@ -21,7 +21,7 @@ function Canvas(game, session, container, toolbar, colorbar) {
     
         this.colorbar.draw(this.context, this.inputManager);
         this.toolbar.draw(this.context, this.inputManager, e);
-	    this.timer.draw();
+        this.progressBar.actionPerformed();
 	};
 
 	this.shouldDraw = function () {
@@ -31,8 +31,8 @@ function Canvas(game, session, container, toolbar, colorbar) {
 		return this.inputManager.mouse.isDown;
 	};
 
-	this.render = function (timer) {
-	    self.timer = timer;
+	this.render = function (progressBar) {
+	    self.progressBar = progressBar;
 	    self.canvas.attr({ 'height': self.height, 'width': self.width });
 		self.container.html(this.canvas);
 		$(self.canvas).on("mousemove", function (e) {

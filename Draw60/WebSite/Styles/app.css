@@ -1,7 +1,30 @@
-body {
-      margin: 0px auto;
-      background-color: #545454;
-}      
+body > .container {
+    padding: 60px 15px 0;
+}
+#loading {
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.5); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+}
+.loading-information {
+    background-color: #fff;
+    margin: auto;
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    right: 0;
+    height: 100px;
+    width: 500px;
+}
+.canvas-container{
+    float: none;
+    margin: 0 auto;
+}
 canvas {
 	border: 1px dotted #000;
 	background-color: #fff;

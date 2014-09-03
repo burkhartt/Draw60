@@ -7,3 +7,4 @@ C:\_Application\draw60\Draw60\Engine\bin\Debug\Simple.Data.SqlServer.dll
 C:\_Application\draw60\Draw60\Engine\bin\Debug\Autofac.xml
 C:\_Application\draw60\Draw60\Engine\obj\Debug\Engine.dll
 C:\_Application\draw60\Draw60\Engine\obj\Debug\Engine.pdb
+C:\_Application\draw60\Draw60\Engine\obj\Debug\Engine.csprojResolveAssemblyReference.cache

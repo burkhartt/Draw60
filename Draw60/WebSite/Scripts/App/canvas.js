@@ -48,13 +48,13 @@ function Canvas(game, session, container, toolbar, colorbar) {
 
 	this.save = function () {
 	    var img = self.canvas[0].toDataURL("image/png");
-	    $("#fakeImage").attr("src", img);
 	    self.game.setDrawing(img);
 	    self.apiClient.post("/user/" + session.userId + "/game/" + self.game.id + "/save", JSON.stringify({ Drawing: encodeURIComponent(img) }), self.saveCallback);
     };
 
 	this.saveCallback = function (response) {
 	    self.clear();
+	    self.game.id = response.Id;
 
 	    if (response.Drawing) {
 	        var img = $('<img src="' + response.Drawing + '" />').get(0);

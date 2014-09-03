@@ -27,17 +27,16 @@ namespace Draw60.Controllers {
                 throw new InvalidDataException("User does not exist.");
             }
 
-            var game = gameFactory.Create(user);
-            gameRepository.Save(game);
-            return game;
+            return gameFactory.Create();
         }
 
         [Route("user/{userId}/game/{gameId}/save")]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public Game PostSave(Guid userId, Guid gameId, [FromBody]DrawingRequest value) {
+            var user = userRepository.GetById(userId);
             var savedGame = gameRepository.GetById(gameId);
             savedGame.Drawing = System.Web.HttpUtility.UrlDecode(value.Drawing);
-            gameRepository.Save(savedGame);
+            gameRepository.Save(savedGame, user);
             return gameService.GetRandomGame(gameId, userId);
         }
     }

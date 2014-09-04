@@ -1,6 +1,4 @@
-function Canvas(game, session, container, toolbar, colorbar) {
-    this.game = game;
-    this.session = session;
+function Canvas(container, toolbar, colorbar) {
 	this.canvas = $("<canvas></canvas>");   
 	this.context = null;
 	this.rectangle = null;
@@ -12,15 +10,40 @@ function Canvas(game, session, container, toolbar, colorbar) {
     this.colorbar = colorbar;
     this.apiClient = new ApiClient();
     this.isActive = true;
-	var self = this;
+    this.drawFunc = null;
+    var self = this;    
+
+    this.eventRegistration = function() {
+        EventBus.addEventListener("game_save", self.onGameSave);
+        EventBus.addEventListener("game_loaded", self.onGameLoaded);
+        EventBus.addEventListener("color_set", self.onColorSet);
+        EventBus.addEventListener("tool_selected", self.onToolSelected);
+    };
+
+    this.onGameSave = function() {
+        self.isActive = false;
+    };
+
+    this.onGameLoaded = function(game) {
+        var img = $('<img src="' + game.Drawing + '" />').get(0);
+        self.context.drawImage(img, 0, 0);
+        self.isActive = true;
+    };
+
+    this.onColorSet = function (color) {
+        self.context.strokeStyle = color.target;
+    };
+
+    this.onToolSelected = function (func) {        
+        self.drawFunc = func.target;        
+    };
 
 	this.draw = function(e) {
 		if (!this.shouldDraw()){
 			return;
 		}
     
-        this.colorbar.draw(this.context, this.inputManager);
-        this.toolbar.draw(this.context, this.inputManager, e);
+		this.drawFunc(self.context, self.inputManager);
         this.progressBar.actionPerformed();
 	};
 
@@ -44,25 +67,11 @@ function Canvas(game, session, container, toolbar, colorbar) {
 		
         self.toolbar.render();
         self.colorbar.render();
-	};      	
-
-	this.save = function () {
-	    var img = self.canvas[0].toDataURL("image/png");
-	    self.game.setDrawing(img);
-	    self.apiClient.post("/user/" + session.userId + "/game/" + self.game.id + "/save", JSON.stringify({ Drawing: encodeURIComponent(img) }), self.saveCallback);
-    };
-
-	this.saveCallback = function (response) {
-	    self.clear();
-	    self.game.id = response.Id;
-
-	    if (response.Drawing) {
-	        var img = $('<img src="' + response.Drawing + '" />').get(0);
-	        self.context.drawImage(img, 0, 0);
-	    }
-
-	    self.isActive = true;
 	};
+
+    this.getImage = function() {
+        return self.canvas[0].toDataURL("image/png");
+    };	
 
     this.stop = function() {
         self.isActive = false;
@@ -71,4 +80,6 @@ function Canvas(game, session, container, toolbar, colorbar) {
     this.clear = function() {
 		this.context.clearRect(0, 0, this.width, this.height);
     };
+    
+    this.eventRegistration();
 };

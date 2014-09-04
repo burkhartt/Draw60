@@ -57,6 +57,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\App\game.js" />
+    <Content Include="Scripts\App\session.js" />
+    <Content Include="Scripts\App\template.js" />
+    <Content Include="Scripts\Lib\eventbus.js" />
+    <Content Include="Scripts\Lib\handlebars.amd.min.js" />
+    <Content Include="Scripts\Lib\handlebars.min.js" />
+    <Content Include="Scripts\Lib\handlebars.runtime.amd.min.js" />
+    <Content Include="Scripts\Lib\handlebars.runtime.min.js" />
     <Content Include="Styles\bootstrap-theme.css" />
     <Content Include="Styles\bootstrap-theme.min.css" />
     <Content Include="Styles\bootstrap.css" />
@@ -68,15 +76,10 @@
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\canvas.js" />
     <Content Include="Scripts\App\colorbar.js" />
-    <Content Include="Scripts\App\Colorbar\Colors\black.js" />
-    <Content Include="Scripts\App\Colorbar\Colors\blue.js" />
-    <Content Include="Scripts\App\Colorbar\Colors\green.js" />
-    <Content Include="Scripts\App\Colorbar\Colors\red.js" />
-    <Content Include="Scripts\App\Colorbar\Colors\yellow.js" />
     <Content Include="Scripts\App\inputmanager.js" />
     <Content Include="Scripts\App\Inputs\mouse.js" />
     <Content Include="Scripts\App\ServerInteraction\api-client.js" />
-    <Content Include="Scripts\App\timer.js" />
+    <Content Include="Scripts\App\progressbar.js" />
     <Content Include="Scripts\App\toolbar.js" />
     <Content Include="Scripts\App\Toolbar\Buttons\eraser.js" />
     <Content Include="Scripts\App\Toolbar\Buttons\lineJoin.js" />
@@ -97,6 +100,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Handlebarsjs_README.md" />
+    <Content Include="App_Readme\Handlebarsjs_LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

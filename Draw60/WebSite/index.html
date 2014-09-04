@@ -1,29 +1,28 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
-  <head>
-  	<script type="text/javascript" src="Scripts/Lib/jquery-2.1.1.min.js"></script> 
-    <script type="text/javascript" src="Scripts/Lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="Scripts/Lib/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="Scripts/App/ServerInteraction/api-client.js"></script> 
-  	<script type="text/javascript" src="Scripts/App/canvas.js"></script>
-  	<script type="text/javascript" src="Scripts/App/inputmanager.js"></script>
-  	<script type="text/javascript" src="Scripts/App/toolbar.js"></script>
-    <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/eraser.js"></script>
-    <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/lineJoin.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Toolbar/Buttons/pencil.js"></script>
-  	<script type="text/javascript" src="Scripts/App/colorbar.js"></script>
-  	<script type="text/javascript" src="Scripts/App/progressbar.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/black.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/red.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/blue.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/yellow.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Colorbar/Colors/green.js"></script>
-  	<script type="text/javascript" src="Scripts/App/Inputs/mouse.js"></script>
-    <script type="text/javascript" src="Scripts/App/app.js"></script>
-    <link rel="stylesheet" href="Styles/bootstrap.min.css">
-    <link rel="stylesheet" href="Styles/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="Styles/app.css"></link>
- </head>
+    <head>
+        <script type="text/javascript" src="Scripts/Lib/jquery-2.1.1.min.js"></script> 
+        <script type="text/javascript" src="Scripts/Lib/jquery.cookie.js"></script>
+        <script type="text/javascript" src="Scripts/Lib/handlebars.min.js"></script>
+        <script type="text/javascript" src="Scripts/Lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="Scripts/Lib/eventbus.js"></script>
+        <script type="text/javascript" src="Scripts/App/ServerInteraction/api-client.js"></script> 
+        <script type="text/javascript" src="Scripts/App/canvas.js"></script>
+        <script type="text/javascript" src="Scripts/App/inputmanager.js"></script>
+        <script type="text/javascript" src="Scripts/App/toolbar.js"></script>
+        <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/lineJoin.js"></script>
+        <script type="text/javascript" src="Scripts/App/Toolbar/Buttons/pencil.js"></script>
+        <script type="text/javascript" src="Scripts/App/colorbar.js"></script>
+        <script type="text/javascript" src="Scripts/App/progressbar.js"></script>
+        <script type="text/javascript" src="Scripts/App/Inputs/mouse.js"></script>
+        <script type="text/javascript" src="Scripts/App/template.js"></script>
+        <script type="text/javascript" src="Scripts/App/game.js"></script>
+        <script type="text/javascript" src="Scripts/App/session.js"></script>
+        <script type="text/javascript" src="Scripts/App/app.js"></script>
+        <link rel="stylesheet" href="Styles/bootstrap.min.css">
+        <link rel="stylesheet" href="Styles/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="Styles/app.css"></link>
+    </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -55,8 +54,10 @@
                             </div>                     
                         </div>
                         <div class="col-lg-3">
-                            <div id="toolbar"></div>
-                            <div id="colorbar"></div>      
+                            <div class="panel-group" id="accordion">
+                                <div id="toolbar" class="panel panel-default"></div>                            
+                                <div id="colorbar" class="panel panel-default"></div>      
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,15 +67,15 @@
             $(function () {
                 $.fn.disableSelection = function () {
                     return this
-                    .attr('unselectable', 'on')
-                    .css('user-select', 'none')
-                    .css('-moz-user-select', 'none')
-                    .css('-khtml-user-select', 'none')
-                    .css('-webkit-user-select', 'none')
-                    .on('selectstart', false)
-                    .on('contextmenu', false)
-                    .on('keydown', false)
-                    .on('mousedown', false);
+                        .attr('unselectable', 'on')
+                        .css('user-select', 'none')
+                        .css('-moz-user-select', 'none')
+                        .css('-khtml-user-select', 'none')
+                        .css('-webkit-user-select', 'none')
+                        .on('selectstart', false)
+                        .on('contextmenu', false)
+                        .on('keydown', false)
+                        .on('mousedown', false);
                 };
 
                 $("#loading").disableSelection();
@@ -87,11 +88,54 @@
             <div class="loading-information container">
                 <h3>Saving and loading next drawing...</h3>
                 <div class="progress">
-                  <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" style="width: 93%">
-                    <span class="sr-only">93% Complete</span>
-                  </div>
+                    <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" style="width: 93%">
+                        <span class="sr-only">93% Complete</span>
+                    </div>
                 </div>
             </div>            
         </div>
+        
+        <script id="colorBar" type="text/x-handlebars-template">            
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#colorBox">
+                    Colors
+                </a>
+                </h4>
+            </div>
+            <div id="colorBox" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {{#each .}}
+                        <button id="color-{{.}}" class="btn btn-primary glyphicon glyphicon-tint" style="color:{{.}}">&nbsp;</button>
+                    {{/each}}
+                </div>
+            </div>            
+        </script>
+        
+        <script id="toolbarTemplate" type="text/x-handlebars-template">            
+            <div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#toolBox">
+                        Tools
+                    </a>
+                    </h4>
+                </div>
+                <div id="toolBox" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div id="tools" />
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script id="pencilButton" type="text/x-handlebars-template">
+            <button class="btn btn-primary glyphicon glyphicon-pencil" id="pencil" />        
+        </script>
+        
+        <script id="eraserButton" type="text/x-handlebars-template">
+            <button class="btn btn-primary glyphicon glyphicon-remove-circle" id="eraser" />
+        </script>
+
     </body>
-</html> 
+</html>

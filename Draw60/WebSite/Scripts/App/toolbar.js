@@ -1,21 +1,21 @@
 function Toolbar(container) {
 	this.container = container;
-	this.buttons = [new PencilButton(this.container), new EraserButton(this.container), new LineJoinButton(this.container)];
-	this.activeButton = this.buttons[0];
+	this.buttons = [new PencilButton(this.container), new LineJoinButton(this.container)];
 	var self = this;
 
-	this.render = function() {
+	this.render = function () {
+	    var template = $(Template.Toolbar().render());
+	    var buttonHtml = "";
 		$.each(this.buttons, function(i, button) {   
-			button.render();
-			button.bind(function() {
-				self.activeButton.deactivate();
-				self.activeButton = button;
-				self.activeButton.activate();
-			});
+			buttonHtml += button.render();			
 		});
-	};
+		template.find("#tools").html(buttonHtml);
+		self.container.html(template.html());
+	    
+		$.each(this.buttons, function (i, button) {
+		    button.bind();
+		});
 
-	this.draw = function(context, inputManager, event) {
-	    this.activeButton.draw(context, inputManager, event);
-	};
+	    self.buttons[0].select();
+	};	
 }

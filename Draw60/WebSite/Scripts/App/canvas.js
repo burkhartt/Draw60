@@ -24,8 +24,9 @@ function Canvas(container, toolbar, colorbar) {
         self.isActive = false;
     };
 
-    this.onGameLoaded = function(game) {
-        var img = $('<img src="' + game.Drawing + '" />').get(0);
+    this.onGameLoaded = function (game) {
+        debugger;
+        var img = $('<img src="' + game.target.drawing + '" />').get(0);
         self.context.drawImage(img, 0, 0);
         self.isActive = true;
     };

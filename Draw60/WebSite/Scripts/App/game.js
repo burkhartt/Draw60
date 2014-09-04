@@ -13,6 +13,7 @@
     };
     
     this.save = function (userId, img) {
+        debugger;
         EventBus.dispatch("game_saved");
         self.drawing = img;
         self.apiClient.post("/user/" + userId + "/game/" + self.id + "/save", JSON.stringify({ Drawing: encodeURIComponent(img) }), self.saveCallback);

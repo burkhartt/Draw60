@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\Lib\pace.min.js" />
     <Content Include="Scripts\App\game.js" />
     <Content Include="Scripts\App\session.js" />
     <Content Include="Scripts\App\template.js" />
@@ -94,6 +95,7 @@
     <Content Include="Scripts\Lib\jquery-2.1.1.min.js" />
     <Content Include="Scripts\Lib\jquery.cookie.js" />
     <Content Include="Styles\app.css" />
+    <Content Include="Styles\pace.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +104,8 @@
   <ItemGroup>
     <Content Include="App_Readme\Handlebarsjs_README.md" />
     <Content Include="App_Readme\Handlebarsjs_LICENSE" />
+    <Content Include="App_Readme\NProgressjs_README.md" />
+    <Content Include="App_Readme\NProgressjs_LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

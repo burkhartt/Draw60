@@ -6,7 +6,7 @@ function ProgressBar(actionCount, container) {
 	var self = this;
 
 	this.render = function () {
-	    this.container.find("#progress-bar").css("width", this.getPercentage());
+	    this.container.find("#myDiv").css("width", this.getPercentage());
 	};
 
     this.getPercentage = function() {

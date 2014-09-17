@@ -2,22 +2,24 @@ function App() {
 	this.toolbar = new Toolbar($("#toolbar"));
   	this.colorbar = new Colorbar($("#colorbar"));
     this.canvas = null;
-  	this.progressBar = new ProgressBar(100, $("#progress"));  	
+    this.progressBar = new ProgressBar(100, $("#myDiv"));
   	this.session = new Session();
     this.game = new Game();
   	var self = this;
 
   	this.run = function () {
-  	    $(document).ajaxStart(function () {
-  	        $('#loading').show();
-  	    }).ajaxStop(function () {
-  	        $('#loading').hide();
+  	    Pace.on("done", function () {
+  	        $("#cover").fadeOut(500);
   	    });
 
-	    this.session.initialize(function (session) {	        
+  	    Pace.on("start", function () {
+  	        $("#cover").fadeIn(500);
+  	    });
+
+  	    this.session.initialize(function (session) {	        
 	        self.game.initialize(session, function () {
 	            self.canvas = new Canvas($("#canvas"), self.toolbar, self.colorbar);
-	            self.canvas.render(self.progressBar);
+	            self.canvas.render(self.progressBar);	            
 	            self.progressBar.render();
 	            self.progressBar.start(function () { self.drawingComplete(); });
 	        });			
